@@ -2,8 +2,6 @@
 
 The dynamic form application is a robust and versatile platform designed to simplify and streamline the creation, management, and submission of customizable forms.
 
-The dynamic form application is a robust and versatile platform designed to simplify and streamline the creation, management, and submission of customizable forms. This application caters to businesses, educational institutions, and any organization that requires a flexible solution for gathering information from users or clients. Here’s a breakdown of the key features and functionalities of the dynamic form application:
-
 ## Key Features
 
 1. **Form Customization**: Users can create forms with various input types, such as text fields, checkboxes, radio buttons, dropdown menus, and date selectors. The platform supports the addition of conditional questions that appear based on previous answers, allowing for highly tailored user experiences.
