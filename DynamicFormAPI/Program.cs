@@ -1,5 +1,8 @@
 using DynamicFormAPI.Data;
+using DynamicFormAPI.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Cosmos;
+using System.Net;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,7 +43,24 @@ builder.Services.AddSingleton((serviceProvider) => {
     return new CosmosDbSeeder(cosmosClient, config);
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var errorMessages = context.ModelState.Values
+            .SelectMany(v => v.Errors)
+            .Select(e => e.ErrorMessage)
+            .Distinct();
+
+        var errorMessageString = string.Join("; ", errorMessages);
+        var errorResponse = new ErrorResponseDTO(
+                       HttpStatusCode.BadRequest,
+                       errorMessageString
+                   );
+
+        return new BadRequestObjectResult(errorResponse);
+    };
+});
 
 // Add wildcard CORS policy
 builder.Services.AddCors(o => o.AddPolicy("default", builder =>
