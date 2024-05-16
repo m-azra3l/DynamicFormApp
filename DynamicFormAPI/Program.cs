@@ -79,6 +79,9 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
+// Inject services
+builder.Services.AddScoped<IFormService, FormService>();
+
 // Remove server name from response header
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
