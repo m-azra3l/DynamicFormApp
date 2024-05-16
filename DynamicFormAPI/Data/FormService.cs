@@ -49,7 +49,9 @@ namespace DynamicFormAPI.Data
                     Id = Guid.NewGuid().ToString(),  // Generate new ID for each question
                     Type = q.Type,
                     Content = q.Content,
-                    Choices = q.Choices
+                    AllowMultiple = q.AllowMultiple,
+                    IncludeOtherOption = q.IncludeOtherOption,
+                    Choices = q.Choices,
                 }).ToList()
             };
 
@@ -96,6 +98,8 @@ namespace DynamicFormAPI.Data
                         FormId = formId,
                         Type = questionReq.Type,
                         Content = questionReq.Content,
+                        AllowMultiple = questionReq.AllowMultiple,
+                        IncludeOtherOption = questionReq.IncludeOtherOption,
                         Choices = questionReq.Choices,
                         IsActive = true
                     };
@@ -175,6 +179,8 @@ namespace DynamicFormAPI.Data
                         Type = q.Type,
                         IsActive = q.IsActive,
                         Content = q.Content,
+                        AllowMultiple = q.AllowMultiple,
+                        IncludeOtherOption = q.IncludeOtherOption,
                         Choices = q.Choices
                     });
 
@@ -223,6 +229,8 @@ namespace DynamicFormAPI.Data
                                 Type = q.Type,
                                 IsActive = q.IsActive,
                                 Content = q.Content,
+                                AllowMultiple = q.AllowMultiple,
+                                IncludeOtherOption = q.IncludeOtherOption,
                                 Choices = q.Choices
                             }).ToList()
                         };
@@ -263,6 +271,8 @@ namespace DynamicFormAPI.Data
                         Type = q.Type,
                         IsActive = q.IsActive,
                         Content = q.Content,
+                        AllowMultiple = q.AllowMultiple,
+                        IncludeOtherOption = q.IncludeOtherOption,
                         Choices = q.Choices
                     }).ToList()
                 };

@@ -66,6 +66,7 @@ namespace DynamicFormAPI.Data
                     submissions.AddRange(response.Select(sub => new SubmissionRes
                     {
                         Id = sub.Id,
+                        FormId = sub.FormId,
                         FirstName = sub.FirstName,
                         LastName = sub.LastName,
                         Email = sub.Email,
@@ -103,6 +104,7 @@ namespace DynamicFormAPI.Data
                     submissions.AddRange(response.Select(sub => new SubmissionRes
                     {
                         Id = sub.Id,
+                        FormId = formId,
                         FirstName = sub.FirstName,
                         LastName = sub.LastName,
                         Email = sub.Email,
@@ -138,6 +140,7 @@ namespace DynamicFormAPI.Data
                 return new SubmissionRes
                 {
                     Id = sub.Id,
+                    FormId = sub.FormId,
                     FirstName = sub.FirstName,
                     LastName = sub.LastName,
                     Email = sub.Email,
