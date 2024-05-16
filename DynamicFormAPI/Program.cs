@@ -1,5 +1,6 @@
 using DynamicFormAPI.Data;
 using DynamicFormAPI.Dtos;
+using DynamicFormAPI.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Cosmos;
 using System.Net;
@@ -90,6 +91,9 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 });
 
 var app = builder.Build();
+
+// Request and response logging middleware
+app.UseMiddleware<RequestResponseLogging>();
 
 // Configure the HTTP request pipeline.
 /*if (app.Environment.IsDevelopment())
