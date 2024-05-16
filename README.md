@@ -1,6 +1,6 @@
 # DynamicFormApp
 
-The dynamic form application is a robust and versatile platform designed to simplify and streamline the creation, management, and submission of customizable forms.
+The dynamic form application is a robust and versatile platform designed to simplify and streamline the creation, management, and submission of customizable forms. This repository contains both web api and xunit test projects.
 
 ## Key Features
 
