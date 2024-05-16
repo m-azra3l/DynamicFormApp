@@ -81,6 +81,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Inject services
 builder.Services.AddScoped<IFormService, FormService>();
+builder.Services.AddScoped<ISubmissionService, SubmissionService>();
 
 // Remove server name from response header
 builder.WebHost.ConfigureKestrel(serverOptions =>
