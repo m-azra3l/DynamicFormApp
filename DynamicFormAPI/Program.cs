@@ -44,6 +44,7 @@ builder.Services.AddSingleton((serviceProvider) => {
     return new CosmosDbSeeder(cosmosClient, config);
 });
 
+// Set controller behaviour
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 {
     options.InvalidModelStateResponseFactory = context =>
