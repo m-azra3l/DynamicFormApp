@@ -1,3 +1,4 @@
+using DynamicFormAPI.Data;
 using Microsoft.Azure.Cosmos;
 using System.Reflection;
 
@@ -31,6 +32,12 @@ builder.Services.AddSingleton((provider) =>
     });
 
     return new CosmosClient(endpointUri, primaryKey, cosmosClientOptions);
+});
+
+// Inject data seeding service
+builder.Services.AddSingleton((serviceProvider) => {
+    var cosmosClient = serviceProvider.GetRequiredService<CosmosClient>();    
+    return new CosmosDbSeeder(cosmosClient, config);
 });
 
 builder.Services.AddControllers();
@@ -69,6 +76,10 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("../swagger/v1/swagger.json", "Dynamic Form App v1"));
+
+// Seed data on startup
+var seeder = app.Services.GetRequiredService<CosmosDbSeeder>();
+await seeder.SeedDataAsync();
 
 app.UseHttpsRedirection();
 app.UseCors("default");
